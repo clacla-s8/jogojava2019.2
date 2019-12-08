@@ -12,13 +12,14 @@ public class Item {
 	
 	private int itemLargura, itemAltura; 
 	private BufferedImage item;
-	private int x, y;
+	private int x, y, count;
 	private Rectangle bounds;
-	Personagem personagem;
+	private Personagem personagem;
 	private boolean pegou = false;
+	private int id;
 	
 	
-	public Item(int itemLargura, int itemAltura,int x, int y, String enderecoItem, Personagem personagem) {
+	public Item(int itemLargura, int itemAltura,int x, int y, String enderecoItem, Personagem personagem, int id) {
 		
 		try {
 			this.item = ImageIO.read(getClass().getClassLoader().getResourceAsStream(enderecoItem));
@@ -30,7 +31,10 @@ public class Item {
 		this.y = y;
 		this.itemLargura = itemLargura;
 		this.itemAltura = itemAltura;
-		this.personagem = personagem;		
+		this.personagem = personagem;
+		this.id = id;
+		count = 0;
+		
 		
 		bounds = new Rectangle(x, y, itemLargura, itemAltura);
 	}
@@ -38,13 +42,16 @@ public class Item {
 	public void draw(Graphics g) {
 		g.drawImage(getItem(), getX(), getY(), getItemLargura(), getItemAltura(), null);
 		
-		//((Graphics2D) g).draw(getBounds());
+		//((Graphics2D) g).draw(getBounds()); // visualizar o bounds dos itens
 	}
 	
 	public void tick() {
 		if(personagem.getBounds().intersects(bounds)) {
 			pegou = true;
+			
 		}
+		
+		
 		
 	}
 	
@@ -107,4 +114,27 @@ public class Item {
 		return pegou;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public Personagem getPersonagem() {
+		return personagem;
+	}
+
+	public void setPersonagem(Personagem personagem) {
+		this.personagem = personagem;
+	}
+	
+	
+	
+	
 }

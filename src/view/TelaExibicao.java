@@ -19,9 +19,8 @@ public class TelaExibicao extends TelaGeral {
 	private FaseView fase;
 	private Menu menu;
 	private JPanel jogo;
+	private GameOver gameOver;	
 	
-	
-	//Creditos Creditos;
 
 	CardLayout cardLayout;
 	
@@ -33,18 +32,18 @@ public class TelaExibicao extends TelaGeral {
 		fase = new FaseView();
 		inventario = new Inventario();
 		menu = new Menu();
-//		
-		//add(fase);
+		gameOver = new GameOver();
+
 		
 		jogo = new JPanel();
 		jogo.setLayout(null);
-////		jogo.setVisible(false);
 		
 		jogo.add(fase).setBounds(0, 0, 600, TelaGeral.ALTURA);
 		jogo.add(inventario).setBounds(600, 0, 200, TelaGeral.ALTURA);
 		
 		add(menu, "m");
 		add(jogo, "j");
+		add(gameOver, "g");
 		
 
 		setVisible(true);
@@ -74,6 +73,10 @@ public class TelaExibicao extends TelaGeral {
 
 	public JPanel getJogo() {
 		return jogo;
+	}
+
+	public GameOver getGameOver() {
+		return gameOver;
 	}
 
 	

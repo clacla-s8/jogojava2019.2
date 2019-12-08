@@ -65,8 +65,9 @@ public class Personagem extends Elemento{
 		}
 		if(direcao == "direita")
 		{
-			if(getX() < 972 )
+			if(getX() < 784 )
 			setX((getX() + VELOCIDADE));
+			
 		}
 		if(direcao == "esquerda")
 		{	

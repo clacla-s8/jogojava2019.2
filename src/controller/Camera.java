@@ -9,30 +9,42 @@ import model.ItemManager;
 import model.Personagem;
 import model.TileMap;
 import view.FaseView;
+import view.GameOver;
+import view.Inventario;
+import view.TelaExibicao;
 import view.TelaGeral;
 
 public class Camera extends Jogo{
 
 	private Personagem personagem;
 	private ItemManager itemManager;	
-	static int x = 0;
-	static int y = 0;
+	private static int x = 0;
+	private static int y = 0;
 
 	private TileMap[] maps;
 	private BufferedImage imagemMapa;
 	private Graphics2D graficosMapa;
+	private Inventario inventario;
+	private TelaExibicao telaExibicao;
 
-	public Camera(FaseView fase, Personagem personagem,ItemManager itemManager , TileMap...maps) {
+	public Camera(FaseView fase, Personagem personagem,ItemManager itemManager ,Inventario inventario, TelaExibicao telaExibicao, TileMap...maps) {
 
 		super(fase);
 
 		this.personagem = personagem;
 		this.itemManager = itemManager;
+		this.inventario = inventario;
+		this.telaExibicao = telaExibicao;
 
+		//itemManager.Missao();
+		inventario.setMissao(itemManager.getMissao());
+		
 		this.maps = maps;
 
 		start();
 	}
+
+	
 
 	@Override
 	public void gameRender() {
@@ -47,7 +59,8 @@ public class Camera extends Jogo{
 
 				personagem.draw(graficosMapa);
 				//graficosMapa.draw(personagem.getBounds());
-				itemManager.draw(graficosMapa);		
+				itemManager.draw(graficosMapa);	
+				
 				
 
 			}
@@ -80,8 +93,21 @@ public class Camera extends Jogo{
 	@Override
 	public void tick() {
 		itemManager.tick();
+		if(itemManager.getContador() != inventario.getCont()) {
+			inventario.setCont(itemManager.getContador());
+			inventario.setMissao(itemManager.getMissao());
+			inventario.repaint();			
+			
+			if (itemManager.getItens().isEmpty()) {
+				
+				telaExibicao.mostrar("g");
+			}
+		}
 		itemManager.draw(graficosMapa);
 		
 	}
-
+	
+	
+	
+	
 }

@@ -1,13 +1,11 @@
 package view;
 
-import java.net.URL;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class Botao extends JButton {
 	
-	int x, y, largura, altura;
+	private int x, y, largura, altura;
 
 	public Botao(int x, int y, int largura, int altura, String caminho) {
 		super();
@@ -23,6 +21,40 @@ public class Botao extends JButton {
 		setIcon(new ImageIcon(getClass().getClassLoader().getResource(caminho)));
 		setBounds(x, y, largura, altura);
 	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public int getLargura() {
+		return largura;
+	}
+
+	public void setLargura(int largura) {
+		this.largura = largura;
+	}
+
+	public int getAltura() {
+		return altura;
+	}
+
+	public void setAltura(int altura) {
+		this.altura = altura;
+	}
+	
+	
 	
 	
 	

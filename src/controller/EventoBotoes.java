@@ -3,21 +3,25 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import view.GameOver;
 import view.Inventario;
 import view.Menu;
 import view.TelaExibicao;
 
 public class EventoBotoes implements ActionListener {
-	Menu menu;
-	TelaExibicao telaExibicao;
-	Inventario inventario;
+	private Menu menu;
+	private TelaExibicao telaExibicao;
+	private Inventario inventario;
+	private GameOver gameOver;
 	
-	public EventoBotoes(Menu menu, TelaExibicao telaExibicao, Inventario inventario) {
+	public EventoBotoes(Menu menu, TelaExibicao telaExibicao, Inventario inventario, GameOver gameOver) {
 		this.menu = menu;
 		this.telaExibicao = telaExibicao;
 		this.inventario = inventario;
+		this.gameOver = gameOver;
 		
 		menu.getButtonJogar().addActionListener(this);
+		gameOver.getButtonhome().addActionListener(this);
 		menu.getButtonSair().addActionListener(new ActionListener() {
 			
 			@Override
@@ -49,6 +53,10 @@ public class EventoBotoes implements ActionListener {
 			telaExibicao.mostrar("j");
 			telaExibicao.getFase().requestFocus();
 			
+		}
+		
+		if(e.getSource() == gameOver.getButtonhome()) {
+			telaExibicao.mostrar("m");
 		}
 		
 	}

@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import controller.ControlePersonagem;
-import controller.EventoTeclado;
+
 
 public class Fase {
 
@@ -21,13 +21,24 @@ public class Fase {
 
 		try {
 			personagem = new Personagem(0, 111, 144, 3, 4, 10, 5, "personagem.png");						
-			itemManager = new ItemManager(lixo);			
-			itemManager.addItem(new Item(32, 32, 100, 10, "lata.png", personagem));
-			itemManager.addItem(new Item(32, 32, 305, 125, "lata.png", personagem));
-			itemManager.addItem(new Item(32, 32, 400, 125, "lata.png", personagem));
-			itemManager.addItem(new Item(32, 32, 500, 125, "copo.png", personagem));
-			itemManager.addItem(new Item(32, 32, 200, 250, "copo.png", personagem));
-			itemManager.addItem(new Item(32, 32, 30, 100, "garrafa.png", personagem));
+			itemManager = new ItemManager(lixo);
+			itemManager.addItem(new Item(32, 32, 400, 250, "papel.png", personagem, 0));
+			itemManager.addItem(new Item(32, 32, 250, 750, "papel.png", personagem, 0));
+			itemManager.addItem(new Item(32, 32, 450, 600, "papel.png", personagem, 0));
+			itemManager.addItem(new Item(32, 32, 700, 400, "papel.png", personagem, 0));
+			itemManager.addItem(new Item(32, 32, 400, 750, "lata.png", personagem, 1));
+			itemManager.addItem(new Item(32, 32, 305, 125, "lata.png", personagem, 1));
+			itemManager.addItem(new Item(32, 32, 400, 20, "lata.png", personagem, 1));
+			itemManager.addItem(new Item(32, 32, 280, 450, "lata.png", personagem, 1));
+			itemManager.addItem(new Item(32, 32, 400, 500, "copo.png", personagem, 2));
+			itemManager.addItem(new Item(32, 32, 500, 125, "copo.png", personagem, 2));
+			itemManager.addItem(new Item(32, 32, 200, 250, "copo.png", personagem, 2));
+			itemManager.addItem(new Item(32, 32, 500,750, "copo.png", personagem, 2));
+			itemManager.addItem(new Item(32, 32, 300, 50, "garrafa.png", personagem, 3));
+			itemManager.addItem(new Item(32, 32, 100, 750, "garrafa.png", personagem, 3));
+			itemManager.addItem(new Item(32, 32, 700, 250, "garrafa.png", personagem, 3));
+			itemManager.addItem(new Item(32, 32, 700, 20, "garrafa.png", personagem, 3));
+			
 			
 			new ControlePersonagem(personagem);
 		} catch (IOException e) {

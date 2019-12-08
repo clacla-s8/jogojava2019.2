@@ -4,21 +4,19 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import view.Inventario;
-
 public class ItemManager {
 	
 	private Item item;
 	private ArrayList<Item> itens;	
-	private int contador;	
-	private Inventario inventario;
-	
+	private int contador;		
+	private int missao;	
 	
 	public ItemManager(Item item) {
 		this.item = item;
-		itens = new ArrayList<>();	
-		
+		itens = new ArrayList<>();			
+		missao = 0;
 	}
+	
 	
 	
 	public ArrayList<Item> getItens() {
@@ -44,12 +42,26 @@ public class ItemManager {
 			i.tick();
 			if(i.isPegou()) {
 				iterador.remove();
-				contador++;
-				//inventario.setCont(contador);
+				if(i.getId() == missao) {
+					contador++;
+					
+					for (Item item : itens) {
+						if (item.getId() == missao) {
+							return;
+						}
+					}
+					missao++;			
+					
+				}else {
+					contador--;
+				}
+				
 			}
 			
-			System.out.println(contador);
-		}		
+			
+		}
+		
+		
 	
 	}
 	
@@ -63,11 +75,21 @@ public class ItemManager {
 	
 	public void addItem(Item it) {
 		itens.add(it);
+
 	}
 
 	public int getContador() {
 		return contador;
 	}
+
+	public int getMissao() {
+		return missao;
+	}
+
+	public void setMissao(int missao) {
+		this.missao = missao;
+	}
+	
 	
 	
 }

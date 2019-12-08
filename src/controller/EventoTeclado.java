@@ -7,7 +7,7 @@ import model.Personagem;
 
 public class EventoTeclado extends KeyAdapter{
 	
-	Personagem personagem;
+	private Personagem personagem;
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -61,6 +61,12 @@ public class EventoTeclado extends KeyAdapter{
 		}
 
 	}
+
+	public Personagem getPersonagem() {
+		return personagem;
+	}
+	
+	
 
 }
 
